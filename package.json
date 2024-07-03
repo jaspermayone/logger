@@ -31,6 +31,7 @@
     "colors": "^1.4.0"
   },
   "devDependencies": {
+    "@swc/core": "1.6.7-nightly-20240703.2",
     "@types/async": "^3.2.24",
     "ts-node": "^10.9.2",
     "tsup": "^8.1.0",
