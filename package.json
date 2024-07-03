@@ -1,0 +1,50 @@
+{
+  "name": "@jaspermayone/logger",
+  "description": "Oooooh! Logs! Shiny!",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jasper Mayone <me@jaspermayone.com>",
+  "maintainers": [
+    {
+      "name": "Jasper Mayone",
+      "email": "me@jaspermayone.com",
+      "url": "https://jaspermayone.com"
+    }
+  ],
+  "keywords": [],
+  "dependencies": {
+    "@slack/web-api": "^7.2.0",
+    "async": "^3.2.5",
+    "bottleneck": "^2.19.5",
+    "colors": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/async": "^3.2.24",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.1.0",
+    "typescript": "^5.5.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaspermayone/logger.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jaspermayone/logger/issues"
+  },
+  "homepage": "https://github.com/jaspermayone/logger#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}
