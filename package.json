@@ -9,7 +9,8 @@
     "dist",
     "LICENSE",
     "README.md",
-    "package.json"
+    "package.json",
+    "pnpm-lock.yaml"
   ],
   "scripts": {
     "build": "tsup",
@@ -47,5 +48,13 @@
   "homepage": "https://github.com/jaspermayone/logger#readme",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true
   }
 }

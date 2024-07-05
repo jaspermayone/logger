@@ -65,6 +65,31 @@ function slack(
     ],
   };
 
+  switch (type) {
+    case "info":
+      slkMessage.text = `:information_source: ${slkMessage.text}`;
+      // @ts-expect-error
+      message.blocks[0].text.text = `:information_source: ${message.blocks[0].text.text}`;
+      break;
+    case "start":
+      slkMessage.text = `:rocket: ${slkMessage.text}`;
+      // @ts-expect-error
+      message.blocks[0].text.text = `:rocket: ${message.blocks[0].text.text}`;
+      break;
+    case "cron":
+      slkMessage.text = `:alarm_clock: ${slkMessage.text}`;
+      // @ts-expect-error
+      message.blocks[0].text.text = `:alarm_clock: ${message.blocks[0].text.text}`;
+      break;
+    case "error":
+      slkMessage.text = `🚨 Yo <@S0790GPRA48> deres an error \n\n [ERROR]: ${slkMessage.text}`;
+      // @ts-expect-error
+      message.blocks[0].text.text = `🚨 Yo <@S0790GPRA48> deres an error \n\n [ERROR]: ${message.blocks[0].text.text}`;
+      break;
+    default:
+      slkMessage.text = slkMessage.text;
+  }
+
   messageQueue.push(message, (error) => {
     if (error) {
       console.error("Failed to send message:", error);
