@@ -49,7 +49,7 @@ function slack(
           type: "mrkdwn",
           text: message
             .split("\n")
-            .map((a) => `> ${a}`)
+            .map((a) => `${a}`)
             .join("\n"),
         },
       },
@@ -67,24 +67,24 @@ function slack(
 
   switch (type) {
     case "info":
-      slkMessage.text = `:information_source: ${slkMessage.text}`;
+      slkMessage.text = `> :information_source: ${slkMessage.text}`;
       // @ts-expect-error
-      message.blocks[0].text.text = `:information_source: ${message.blocks[0].text.text}`;
+      message.blocks[0].text.text = `> :information_source: ${message.blocks[0].text.text}`;
       break;
     case "start":
-      slkMessage.text = `:rocket: ${slkMessage.text}`;
+      slkMessage.text = `> :rocket: ${slkMessage.text}`;
       // @ts-expect-error
-      message.blocks[0].text.text = `:rocket: ${message.blocks[0].text.text}`;
+      message.blocks[0].text.text = `> :rocket: ${message.blocks[0].text.text}`;
       break;
     case "cron":
-      slkMessage.text = `:alarm_clock: ${slkMessage.text}`;
+      slkMessage.text = `> :alarm_clock: ${slkMessage.text}`;
       // @ts-expect-error
-      message.blocks[0].text.text = `:alarm_clock: ${message.blocks[0].text.text}`;
+      message.blocks[0].text.text = `> :alarm_clock: ${message.blocks[0].text.text}`;
       break;
     case "error":
-      slkMessage.text = `🚨 Yo deres an error \n\n [ERROR]: ${slkMessage.text}`;
+      slkMessage.text = `> 🚨 Yo deres an error \n\n [ERROR]: ${slkMessage.text}`;
       // @ts-expect-error
-      message.blocks[0].text.text = `🚨 Yo deres an error \n\n [ERROR]: ${message.blocks[0].text.text}`;
+      message.blocks[0].text.text = `> 🚨 Yo deres an error \n\n [ERROR]: ${message.blocks[0].text.text}`;
       break;
     default:
       slkMessage.text = slkMessage.text;
