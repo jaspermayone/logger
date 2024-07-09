@@ -27,20 +27,24 @@ const messageQueue = async.queue(async (task: any, callback: any) => {
  * Takes in a message and logs it to a slack channel.
  *
  * @param {string}     token - Slack Token (needs permissions to post message in the channel!)
- * @param {string} channelId - Slack Channel ID (where to log the error in slack)
- * @param {string}  message - The message to log
  * @param {LogType} type - The type of message to log
+ * @param {string}  message - The message to log
+ * @param {string}  location - Slack Channel or Thread ID (where to log the error in slack)
  *
  */
 function slack(
   token: string,
-  channelId: string,
+  type: LogType,
   message: string,
-  type: LogType
+  location?: {
+    thread_ts?: string;
+    channel: string;
+  }
 ) {
   const slkMessage = {
     token: token,
-    channel: channelId,
+    channel: location?.channel,
+    thread_ts: location?.thread_ts,
     text: message,
     blocks: [
       {
@@ -134,19 +138,22 @@ function terminal(message: string, type: LogType) {
  * Logs a message to ALL the channels.
  *
  * @param {string}  message - The message to log
- * @param {string}  slackToken - Slack Token (needs permissions to post message in the channel!)
- * @param {string} slackChannel - Slack Channel ID (where to log the error in slack)
  * @param {LogType} type - The type of message to log
+ * @param {string}  slackToken - Slack Token (needs permissions to post message in the channel!)
+ * @param {string} slackLocation - Slack Channel or Thread ID (where to log the error in slack)
  *
  */
 function full(
   message: string,
+  type: LogType,
   slackToken: string,
-  slackChannel: string,
-  type: LogType
+  slackLocation?: {
+    thread_ts?: string;
+    channel: string;
+  }
 ) {
   terminal(message, type);
-  slack(slackToken, slackChannel, message, type);
+  slack(slackToken, type, message, slackLocation);
 }
 
 // people should be able to call this function as logger.log(), logger.slack(), logger.terminal(), logger.full()
